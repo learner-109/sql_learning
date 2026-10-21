@@ -1,0 +1,40 @@
+#####################################################  SYNTAX  #####################################################
+
+select { distinct } ...
+
+from [table_name]
+
+{ where ... }
+
+{
+  { inner | left | right | full } join [table_name]
+  [ on ... | using (...) ]
+}
+
+{
+  group by ...
+  { having ... }
+}
+
+{ order by ... { asc | desc } }
+
+{ limit n }
+
+{ offset n }
+
+#####################################################  Execution order  #####################################################
+
+1) from / join
+2) where
+3) group by
+4) having
+5) select
+6) distinct
+7) order by
+8) limit / offset
+
+#####################################################  Important concepts, functions  #####################################################
+
+1) STRING_AGG(value, append_string)  =>  String concatenation aggregate function.
+2) EXTRACT ([YEAR | MONTH | DAY] from date_)  =>  Extract fields from the date.
+3) case when _1_true_ then do_this_1  { when _2_true_ then do_this_2 }  { else [else_do_this] } end
