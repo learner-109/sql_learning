@@ -30,7 +30,7 @@ from [table_name]
 4) LENGTH(string)  =>  Finds number of characters in the string.
 5) OCTET_LENGTH(string)  =>  Finds number of bytes in the string.
 6) [row_number(), dense_rank(), rank(),
-    sum(), avg(), count(), max(), min(),
+    sum(), avg(), count(), max(), min(),                          => Window functions
     lag(), lead(), first_value(), last_value(), nth_value()
    ] over ( { partition by column_name } order by column_name)
 
