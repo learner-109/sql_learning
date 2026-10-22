@@ -1,4 +1,4 @@
-#####################################################  SYNTAX  #####################################################
+##################################################################################  SYNTAX  ##################################################################################
 
 select { distinct } ...
 
@@ -22,7 +22,19 @@ from [table_name]
 
 { offset n }
 
-#####################################################  Execution order  #####################################################
+###############################################################################  Other SYNTAX  ###############################################################################
+
+1) STRING_AGG(value, append_string)  =>  String concatenation aggregate function.
+2) EXTRACT ([YEAR | MONTH | DAY] from date_value)  =>  Extract fields from the date.
+3) case when _1_true_ then do_this_1  { when _2_true_ then do_this_2 }  { else [else_do_this] } end
+4) LENGTH(string)  =>  Finds number of characters in the string.
+5) OCTET_LENGTH(string)  =>  Finds number of bytes in the string.
+6) [row_number(), dense_rank(), rank(),
+    sum(), avg(), count(), max(), min(),
+    lag(), lead(), first_value(), last_value(), nth_value()
+   ] over ( { partition by column_name } order by column_name)
+
+#############################################################################  Execution order  ##############################################################################
 
 1) from / join
 2) where
@@ -33,11 +45,7 @@ from [table_name]
 7) order by
 8) limit / offset
 
-#####################################################  Important concepts, functions  #####################################################
+###########################################################################  Important concepts  #############################################################################
 
-1) STRING_AGG(value, append_string)  =>  String concatenation aggregate function.
-2) EXTRACT ([YEAR | MONTH | DAY] from date_)  =>  Extract fields from the date.
-3) case when _1_true_ then do_this_1  { when _2_true_ then do_this_2 }  { else [else_do_this] } end
-4) LENGTH(string)  =>  Finds number of characters in the string.
-5) OCTET_LENGTH(string)  =>  Finds number of bytes in the string.
-6) Aggregate functions skips "null" values.
+1) Aggregate functions skips "null" values.
+2) Aggregate functions collapses rows.
