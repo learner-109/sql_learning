@@ -40,3 +40,4 @@ from [table_name]
 3) case when _1_true_ then do_this_1  { when _2_true_ then do_this_2 }  { else [else_do_this] } end
 4) LENGTH(string)  =>  Finds number of characters in the string.
 5) OCTET_LENGTH(string)  =>  Finds number of bytes in the string.
+6) Aggregate functions skips "null" values.
