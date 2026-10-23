@@ -106,9 +106,13 @@
 4) octet_length(string)  =>  Finds number of bytes in the string.
 
 5) [ row_number() | dense_rank() | rank() |
-     sum() | avg() | count() | max() | min() |                      => Window functions. "partition by column_name" means group by "column_name" and calculate for each.
-     lag() | lead() | first_value() | last_value() | nth_value()
-   ] over ( { partition by column_name } order by column_name)
+     sum() | avg() | count() | max() | min() |                  
+     lag() | lead() | first_value() | last_value() | nth_value()    => Window functions. "partition by column_name" means group by "column_name" and calculate for each.
+   ] over ( { partition by column_name }
+             order by column_name
+            { rows between row_bound_start and row_bound_end }
+          )
+6) row_bound ∈ {unbounded preceding , n preceding , current row , n following , unbounded following}
 
 
 
