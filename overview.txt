@@ -1,40 +1,78 @@
-##################################################################################  SYNTAX  ##################################################################################
+#########################################################################################################################################################################
+#                                                                                Syntax                                                                                 #
+#########################################################################################################################################################################
 
-select { distinct } ...
+1) Create database:
 
-from [table_name]
+          create database database_name;
 
-{ where ... }
+2) Create table:
 
-{
-  { inner | left | right | full } join [table_name]
-  [ on ... | using (...) ]
-}
+          create table table_name 
 
-{
-  group by ...
-  { having ... }
-}
+          (column_1_name [int, big_int, small_int, char(n), var_char(n), boolean, date, ...] {unique} {primary key}... , ...);
 
-{ order by ... { asc | desc } }
+3) Select rows:
 
-{ limit n }
+          select { distinct } ...
 
-{ offset n }
+          from table_name
 
-###############################################################################  Other SYNTAX  ###############################################################################
+          {
+            { inner | left | right | full } join [table_name]
+            [ on ... | using (...) ]
+          }
 
-1) STRING_AGG(value, append_string)  =>  String concatenation aggregate function.
-2) EXTRACT ([YEAR | MONTH | DAY] from date_value)  =>  Extract fields from the date.
-3) case when _1_true_ then do_this_1  { when _2_true_ then do_this_2 }  { else [else_do_this] } end
-4) LENGTH(string)  =>  Finds number of characters in the string.
-5) OCTET_LENGTH(string)  =>  Finds number of bytes in the string.
-6) [row_number(), dense_rank(), rank(),
-    sum(), avg(), count(), max(), min(),                          => Window functions
-    lag(), lead(), first_value(), last_value(), nth_value()
-   ] over ( { partition by column_name } order by column_name)
+          { where ... }
 
-#############################################################################  Execution order  ##############################################################################
+          {
+            group by ...
+            { having ... }
+          }
+
+          { order by column_1 { desc | asc }, column_2 { desc | asc }, ... }
+
+          { limit n }
+
+          { offset n }
+
+          ;
+
+4) Update table:
+
+          update table_name
+
+          where condition_1 { [ and | or ] condition_2 ...} ;
+
+5) Insert row:
+
+          insert into table_name { (column_name_1, ...) }
+
+          values (value_1_1, ...) {, (value_2_1, ...), ... } ;
+
+6) Delete row:
+
+          delete from table_name
+
+          where condition_1 { [ and | or ] condition_2 ...} ;
+
+7) Conditional statement:
+
+          case
+
+          when _1_true_ then do_this_1 
+
+          { when _2_true_ then do_this_2 , ...} 
+
+          { else [else_do_this] }
+
+          end
+
+
+
+#########################################################################################################################################################################
+#                                                                            Execution Order                                                                            #
+#########################################################################################################################################################################
 
 1) from / join
 2) where
@@ -45,7 +83,37 @@ from [table_name]
 7) order by
 8) limit / offset
 
-###########################################################################  Important concepts  #############################################################################
+
+
+#########################################################################################################################################################################
+#                                                                 Other PostgreSQL Functions and Syntax                                                                 #
+#########################################################################################################################################################################
+
+1) string_agg(value, append_string)  =>  String concatenation aggregate function.
+
+2) extract ([year | month | day] from date_value)  =>  Extract fields from the date.
+
+3) length(string)  =>  Finds number of characters in the string.
+
+4) octet_length(string)  =>  Finds number of bytes in the string.
+
+5) [ row_number() | dense_rank() | rank() |
+     sum() | avg() | count() | max() | min() |                      => Window functions. "partition by column_name" means group by "column_name" and calculate for each.
+     lag() | lead() | first_value() | last_value() | nth_value()
+   ] over ( { partition by column_name } order by column_name)
+
+
+
+#########################################################################################################################################################################
+#                                                                          Important Concepts                                                                           #
+#########################################################################################################################################################################
 
 1) Aggregate functions skips "null" values.
+
 2) Aggregate functions collapses rows.
+
+3) Window functions are like aggregate functions but it doesn't collapse rows.
+
+4) Window functions support grouping and ordering.
+
+5) order by column_1 { desc | asc }, column_2 { desc | asc }, ...   => Starts ordering from left, upon conflict moves to the next column as tie breaker.
