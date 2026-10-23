@@ -10,7 +10,7 @@
 
           create table table_name 
 
-          (column_1_name [int, bigint, smallint, numeric(p, s), float, boolean, char(n), var_char(n), date, ...] {unique} {primary key}... , ...);
+          (column_1_name [int, bigint, smallint, numeric(p, s), float, boolean, char(n), varchar(n), date, ...] {unique} {primary key}... , ...);
 
 3) Select rows:
 
@@ -89,11 +89,11 @@
 #                                                                 Other PostgreSQL Functions and Syntax                                                                 #
 #########################################################################################################################################################################
 
-1) string_agg(value, append_string)  =>  String concatenation aggregate function.
+1) string_agg(value, separator)  =>  String concatenation aggregate function.
 
 2) extract ([year | month | day] from date_value)  =>  Extract fields from the date.
 
-3) length(string)  =>  Finds number of characters in the string.
+3) char_length(string)  =>  Finds number of characters in the string.
 
 4) octet_length(string)  =>  Finds number of bytes in the string.
 
