@@ -10,7 +10,7 @@
 
           create table table_name 
 
-          (column_1_name [int, big_int, small_int, char(n), var_char(n), boolean, date, ...] {unique} {primary key}... , ...);
+          (column_1_name [int, bigint, smallint, numeric(p, s), float, boolean, char(n), var_char(n), date, ...] {unique} {primary key}... , ...);
 
 3) Select rows:
 
