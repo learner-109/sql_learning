@@ -68,6 +68,14 @@
 
           end
 
+8) CTE (Common Table Expression):
+
+          with
+
+          cte_name_1 as ( ... )
+
+          {, cte_name_2 as ( ... ), ...}
+
 
 
 #########################################################################################################################################################################
@@ -117,3 +125,5 @@
 4) Window functions support grouping and ordering.
 
 5) order by column_1 { desc | asc }, column_2 { desc | asc }, ...   => Starts ordering from left, upon conflict moves to the next column as tie breaker.
+
+6) "group by number_x, number_y, ..."   =>  It does grouping based on the xth, yth, ... query of the "select" statement.
