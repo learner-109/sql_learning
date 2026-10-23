@@ -127,3 +127,5 @@
 5) order by column_1 { desc | asc }, column_2 { desc | asc }, ...   => Starts ordering from left, upon conflict moves to the next column as tie breaker.
 
 6) "group by number_x, number_y, ..."   =>  It does grouping based on the xth, yth, ... query of the "select" statement.
+
+7) "coalesce(value_1, value_2, ...)"  => Returns first non-null value from left. It is not an aggregate function.
