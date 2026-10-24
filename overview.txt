@@ -114,6 +114,8 @@
           )
 6) row_bound ∈ {unbounded preceding , n preceding , current row , n following , unbounded following}
 
+7) to_char(date, 'yyyy-mm')  =>  Formats date.
+
 
 
 #########################################################################################################################################################################
@@ -133,3 +135,17 @@
 6) "group by number_x, number_y, ..."   =>  It does grouping based on the xth, yth, ... query of the "select" statement.
 
 7) "coalesce(value_1, value_2, ...)"  => Returns first non-null value from left. It is not an aggregate function.
+
+8) You can use same grouping expression in both "select" and "group by" but it should not contain aggregate function. For ex:
+
+           i) select 
+                    to_char(order_date, 'yyyy-mm') as formatted_month,
+                    count(*) AS total_orders                                     => ✅ Valid
+              from orders
+              group by to_char(order_date, 'yyyy-mm');
+
+          ii) select 
+                    concat(customer_name, ' - ', sum(amount)) as label
+              from sales                                                         => ❌ Invalid
+              group by concat(customer_name, ' - ', sum(amount)); 
+
