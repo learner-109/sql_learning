@@ -149,3 +149,4 @@
               from sales                                                         => ❌ Invalid
               group by concat(customer_name, ' - ', sum(amount)); 
 
+9) We cannot use window function in "having".
