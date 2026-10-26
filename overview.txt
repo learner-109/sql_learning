@@ -152,3 +152,6 @@
 9)  We cannot use window function in "having".
 
 10) Functions are not allowed in "where".
+
+
+11) Window functions cannot be nested.
